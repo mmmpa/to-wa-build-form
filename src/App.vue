@@ -1,25 +1,37 @@
 <template lang="pug">
-  HelloWorld
+  .container
+    ToWa(:v="data")
+    pre.code {{ code }}
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+  import ToWa from './components/ToWa'
 
-export default {
-  name: 'App',
-  components: {
-    HelloWorld,
+  export default {
+    name: 'App',
+    computed: {
+      code () {
+        return JSON.stringify(ToWa.normalize(this.data))
+      },
+    },
+    data () {
+      return {
+        data: ToWa.prepare({
+          and: [
+            { eq: ['a', { col: ['table', 'b'] }] },
+            { ne: ['a', 1] },
+            {
+              or: [
+                { eq: [{ col: ['table', 'b'] }, { col: ['table', 'c'] }] },
+                { ne: [{ col: ['default', 'a'] }, 1] },
+              ]
+            },
+          ]
+        }),
+      }
+    }
   }
-}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
