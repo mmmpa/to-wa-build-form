@@ -25,7 +25,7 @@ const webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? config.build.devtool : false,
   output: {
     path: path.resolve(__dirname, '../built'),
-    filename: 'built.js',
+    filename: 'index.js',
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
