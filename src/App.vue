@@ -18,12 +18,12 @@
       return {
         data: ToWa.prepare({
           and: [
-            { eq: ['a', { col: ['table', 'b'] }] },
-            { ne: ['a', 1] },
+            { '<': ['kcal', 100] },
+            { '>': ['protein', 10] },
             {
               or: [
-                { eq: [{ col: ['table', 'b'] }, { col: ['table', 'c'] }] },
-                { ne: [{ col: ['default', 'a'] }, 1] },
+                { '<': ['carbo', { col: ['default', 'protein'] }] },
+                { '<': ['rapid', 5] },
               ]
             },
           ]
@@ -32,6 +32,3 @@
     }
   }
 </script>
-
-<style>
-</style>

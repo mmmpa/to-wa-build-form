@@ -1,73 +1,25 @@
 <template lang="pug">
-  .value-selector(v-if="isLeft")
-    .type-selector
-      label 項目
-    .value-input
-      select.form-control(v-model="value")
+  .to-wa-value-selector(v-if="isLeft")
+    .to-wa-type-selector
+      label.to-wa-type-selector-label 項目
+    .to-wa-value-input
+      select(v-model="value")
         option(:value="null") (未選択)
         option(v-for="v in ToWa.cols", :value="v.value") {{ v.label }}
-  .value-selector(v-else)
-    .type-selector
-      label
+  .to-wa-value-selector(v-else)
+    .to-wa-type-selector
+      label.to-type-selector-wa-label
         input(type="radio", :checked="isValue", @click="toValue")
         | 値
-      label
+      label.to-type-selector-wa-label
         input(type="radio", :checked="isCol", @click="toColumn")
         | 項目
-    .value-input
-      input.form-control(v-if="isValue", v-model="value")
-      select.form-control(v-if="isCol", v-model="value")
+    .to-wa-value-input
+      input(type="text", v-if="isValue", v-model="value")
+      select(v-if="isCol", v-model="value")
         option(:value="null") (未選択)
         option(v-for="v in ToWa.cols", :value="v.value") {{ v.label }}
 </template>
-
-<style scoped>
-  .type-selector {
-    vertical-align: middle;
-    display: inline-block;
-    margin-right: -1px;
-    height: 40px;
-    overflow: hidden;
-    line-height: 40px;
-    font-size: 0.8em;
-    border: 1px solid #d6e1e5;
-    border-radius: 3px 0 0 3px;
-    padding: 0 0.5em;
-    background: #f3f3f3;
-  }
-
-  .type-selector label {
-    padding: 0.5em
-  }
-
-  .value-input select, .value-input input {
-    border-radius: 0 3px 3px 0 !important;
-    min-width: 200px;
-  }
-
-  .value-input {
-    display: inline-block;
-  }
-
-  .header {
-    margin-bottom: -1.75em;
-  }
-
-  .description {
-    display: inline-block;
-    padding: 0 0.25em;
-    background: #fff;
-    position: relative;
-    line-height: 100%;
-    top: -1.75em;
-    left: -0.25em;
-  }
-
-  .ex-block {
-    display: inline-block;
-  }
-</style>
-
 
 <script>
   import Vue from 'vue'

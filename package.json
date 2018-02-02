@@ -1,8 +1,18 @@
 {
-  "name": "to-wa-frontend",
-  "version": "1.0.0",
-  "description": "A Vue.js project",
-  "author": "mmmpa <mmmpa.mmmpa@gmail.com>",
+  "name": "to-wa-build-form",
+  "version": "0.0.1",
+  "description": "ToWa build form",
+  "main": "built/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mmmpa/to-wa-build-form.git"
+  },
+  "author": "mmmpa <mmmpa.mmmpa@gmail.com> (http://mmmpa.net)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mmmpa/to-wa-build-form/issues"
+  },
+  "homepage": "https://github.com/mmmpa/to-wa-build-form#readme",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
@@ -10,9 +20,11 @@
     "unit": "jest --config test/unit/jest.conf.js --coverage",
     "test": "npm run unit",
     "lint": "eslint --ext .js,.vue src test/unit",
-    "build": "node build/build.js"
+    "build": "node build/build.js",
+    "sass": "node-sass --watch ./src-sass/common.sass ./static/to-wa-build-form.css"
   },
   "dependencies": {
+    "node-sass": "^4.7.2",
     "pug": "^2.0.0-rc.4",
     "vue": "^2.5.2",
     "vuex": "^3.0.1"

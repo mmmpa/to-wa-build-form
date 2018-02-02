@@ -19,13 +19,20 @@ ToWa.normalize = function (data) {
 
   const { key, value } = singleKVObject(data)
 
-  if (!ToWa.isCol(key)) {
+  if (ToWa.isLogical(key)) {
     return { [key]: value.map(v => ToWa.normalize(v)) }
   }
 
+  if (value[0].constructor === Object) {
+    const { key: k, value: v } = singleKVObject(value[0])
+    return ToWa.isCol(k) && v[0] === ToWa.defaultTable
+      ? [v[1], value[1]]
+      : data
+  }
+
   return value[0] === ToWa.defaultTable
-    ? value[1]
-    : data
+    ? data
+    : [{ col: value[0] }, value[1]]
 }
 
 ToWa.prepare = function (data) {
