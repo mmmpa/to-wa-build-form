@@ -26,6 +26,9 @@ const webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: path.resolve(__dirname, '../built'),
     filename: 'index.js',
+    libraryTarget: 'umd',
+    library: 'vue-clock',
+    umdNamedDefine: true
   },
   plugins: [
     // http://vuejs.github.io/vue-loader/en/workflow/production.html
