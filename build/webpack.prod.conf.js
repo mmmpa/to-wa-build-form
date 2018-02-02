@@ -13,7 +13,7 @@ const env = process.env.NODE_ENV === 'testing'
 
 const webpackConfig = merge(baseWebpackConfig, {
   entry: {
-    app: './src/index.js'
+    app: './src/components/ToWa.js'
   },
   module: {
     rules: utils.styleLoaders({

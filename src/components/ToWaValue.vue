@@ -29,6 +29,14 @@
   export default {
     props: ['v', 'lr'],
     mixins: [toWaAnalyzer('v')],
+    watch: {
+      '$props.v': {
+        deep: true,
+        handler: function (v) {
+          console.log('watch', v)
+        },
+      },
+    },
     computed: {
       isLeft () {
         return this.lr === 'left'
@@ -60,12 +68,14 @@
     },
     methods: {
       toValue () {
+        console.log('toValue')
         if (this.isValue) {
           return
         }
         this.value = ''
       },
       toColumn () {
+        console.log('toColumn')
         if (this.isCol) {
           return
         }
